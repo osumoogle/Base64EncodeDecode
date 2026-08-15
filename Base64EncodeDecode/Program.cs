@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using Utils;
+using Decoder = Utils.Decoder;
+using Encoder = Utils.Encoder;
 
 namespace Base64EncodeDecode
 {
@@ -27,7 +30,7 @@ namespace Base64EncodeDecode
                             Console.WriteLine("Invalid string.");
                             return;
                         }
-                        var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(toEncode));
+                        var encoded = Encoder.Base64Encode(toEncode);
                         Console.WriteLine($"Encoded: {encoded}");
                         return;
                     case "decode":
@@ -42,7 +45,7 @@ namespace Base64EncodeDecode
                             Console.WriteLine("Invalid string.");
                             return;
                         }
-                        var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(toDecode));
+                        var decoded = Decoder.Base64Decode(toDecode);
                         Console.WriteLine($"Decoded: {decoded}");
 
                         return;
